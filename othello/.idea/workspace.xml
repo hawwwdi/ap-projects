@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f0d4c904-3c37-4d73-9935-c99cc81f0453" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/otello/project/GameSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/otello/project/GameSystem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/otello/project/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/otello/project/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/GameSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/GameSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/Player.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1Zim4Bn4s3lj7l7iSgolvZuxi0y" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="project.Main" />
+      <module name="otello" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f0d4c904-3c37-4d73-9935-c99cc81f0453" name="Default Changelist" comment="" />
+      <created>1585330095051</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585330095051</updated>
+      <workItem from="1585330101246" duration="38716000" />
+      <workItem from="1585423953288" duration="12281000" />
+      <workItem from="1585478817454" duration="4794000" />
+      <workItem from="1585727955408" duration="1486000" />
+      <workItem from="1586025928640" duration="11920000" />
+      <workItem from="1586073893575" duration="601000" />
+      <workItem from="1586086135737" duration="74000" />
+      <workItem from="1587978986629" duration="1136000" />
+      <workItem from="1587980144343" duration="224000" />
+      <workItem from="1587986257874" duration="1075000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="488" y="65" key="#com.intellij.ide.util.MemberChooser" timestamp="1585416292599">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="488" y="65" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1585416292599" />
+    <state x="413" y="115" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1585372419917">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="413" y="115" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1366.738@0.0.1366.738" timestamp="1585372419917" />
+    <state x="425" y="67" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1586073485374">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="425" y="67" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.738@0.0.1366.738" timestamp="1586073485374" />
+    <state x="306" y="0" key="CommitChangelistDialog2" timestamp="1585427050565">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="306" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1585427050565" />
+    <state x="462" y="122" key="FileChooserDialogImpl" timestamp="1586073213798">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="462" y="122" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1586073213798" />
+    <state width="1322" height="-12" key="GridCell.Tab.0.bottom" timestamp="1587987344190">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1322" height="-12" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1587987344190" />
+    <state width="1322" height="-12" key="GridCell.Tab.0.center" timestamp="1587987344189">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1322" height="-12" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1587987344189" />
+    <state width="1322" height="-12" key="GridCell.Tab.0.left" timestamp="1587987344189">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1322" height="-12" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1587987344189" />
+    <state width="1322" height="-12" key="GridCell.Tab.0.right" timestamp="1587987344190">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1322" height="-12" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1587987344190" />
+    <state width="1322" height="309" key="GridCell.Tab.1.bottom" timestamp="1585421143544">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1322" height="309" key="GridCell.Tab.1.bottom/0.0.1366.738@0.0.1366.738" timestamp="1585421143544" />
+    <state width="1322" height="309" key="GridCell.Tab.1.center" timestamp="1585421143543">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1322" height="309" key="GridCell.Tab.1.center/0.0.1366.738@0.0.1366.738" timestamp="1585421143543" />
+    <state width="1322" height="309" key="GridCell.Tab.1.left" timestamp="1585421143542">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1322" height="309" key="GridCell.Tab.1.left/0.0.1366.738@0.0.1366.738" timestamp="1585421143542" />
+    <state width="1322" height="309" key="GridCell.Tab.1.right" timestamp="1585421143543">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1322" height="309" key="GridCell.Tab.1.right/0.0.1366.738@0.0.1366.738" timestamp="1585421143543" />
+    <state x="118" y="0" key="new project wizard" timestamp="1586086219633">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="118" y="0" key="new project wizard/0.0.1366.738@0.0.1366.738" timestamp="1586086219633" />
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1585424519979">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1585424519979" />
+  </component>
+</project>

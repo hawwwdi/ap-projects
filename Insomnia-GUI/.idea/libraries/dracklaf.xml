@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="dracklaf">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib/dracklaf" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/dracklaf" recursive="false" />
+  </library>
+</component>

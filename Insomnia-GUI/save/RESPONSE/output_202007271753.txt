@@ -1,0 +1,10 @@
+expired time: 590 ms
+status: 201 Created
+transferred data Size: 0.0 KB
+headers: 
+connection : [keep-alive]
+date : [Mon, 27 Jul 2020 13:28:09 GMT]
+server : [nginx/1.16.0]
+transfer-encoding : [chunked]
+x-powered-by : [Express]
+response body: 
