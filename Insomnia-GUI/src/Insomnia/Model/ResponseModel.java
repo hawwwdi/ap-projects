@@ -6,7 +6,6 @@ import java.util.*;
 
 /**
  * response model class
- * it use to save server response details
  */
 public class ResponseModel implements Serializable {
     private String url;
@@ -16,11 +15,6 @@ public class ResponseModel implements Serializable {
     private String dataTransferred;
     private String time;
 
-    /**
-     * constructor of this class
-     * it use to create new Object of this class
-     * @param url server url
-     */
     public ResponseModel(String url) {
         this.url = url;
         status = "null";
@@ -81,7 +75,7 @@ public class ResponseModel implements Serializable {
 
     /**
      * get content type method
-     * it return response content type headers value
+     * it returns response content type headers value
      * @return response content type headers value
      */
     public String getContentType() {

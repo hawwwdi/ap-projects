@@ -20,8 +20,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.regex.Pattern;
 
 /**
- * request seting panel
- * it use to send request and change request attributes
+ * request seting panel class
  */
 public class RequestSettingPanel extends EmptyPanel {
     private RequestModel model;
@@ -30,13 +29,7 @@ public class RequestSettingPanel extends EmptyPanel {
     private HeaderPanel header;
     private QueryPanel query;
 
-    /**
-     * constructor for this class
-     * it use to create new object of this clqss
-     *
-     * @param model         parent request model
-     * @param responsePanel panel to show result
-     */
+    
     public RequestSettingPanel(RequestModel model, JPanel responsePanel) {
         this.model = model;
         this.responsePanel = responsePanel;
@@ -45,27 +38,18 @@ public class RequestSettingPanel extends EmptyPanel {
         loadModel();
     }
 
-    /**
-     *
-     */
     private void loadModel() {
         this.header.setHeaders(model.getHeaders(), ";", ":");
         this.query.setQueries(model.getQuery(), "&", "=");
         this.body.loadBody(model.getMessageBody());
     }
 
-    /**
-     * it use to config up panel of this class
-     */
     private void configUpPanel() {
         upPanel.setLayout(new BorderLayout());
         SendRequestPanel up = new SendRequestPanel();
         upPanel.add(up, BorderLayout.CENTER);
     }
 
-    /**
-     * it use to config center panel of this class
-     */
     private void configCenterPanel() {
         centerPanel.setLayout(new BorderLayout());
         JTabbedPane centerTabs = new JTabbedPane();
@@ -114,9 +98,6 @@ public class RequestSettingPanel extends EmptyPanel {
         private JTextField address;
         private JButton send;
 
-        /**
-         * constructor of this class
-         */
         public SendRequestPanel() {
             this.setLayout(new BorderLayout());
             configMethodsComboBox();
@@ -154,9 +135,6 @@ public class RequestSettingPanel extends EmptyPanel {
             });
         }
 
-        /**
-         * this method config combo box of request methods
-         */
         private void configMethodsComboBox() {
             methods = new JComboBox<>(Method.values());
             methods.setSelectedItem(model.getMethod());
@@ -170,9 +148,6 @@ public class RequestSettingPanel extends EmptyPanel {
             methods.setPreferredSize(new Dimension(90, 40));
         }
 
-        /**
-         * this method add actionListener to the send button
-         */
         private void configSendButton() {
             send = new JButton("Send  ➤");
             send.setEnabled(UrlValidator.getInstance().isValid(model.getUrl()));
@@ -229,7 +204,6 @@ public class RequestSettingPanel extends EmptyPanel {
 
     /**
      * inner class for body panel
-     * it use to create object for body panel
      */
     private class BodyPanel extends JPanel {
         private HeaderPanel formData;
@@ -361,7 +335,6 @@ public class RequestSettingPanel extends EmptyPanel {
 
     /**
      * inner class for header panel
-     * it use to create object for header panel
      */
     private class HeaderPanel extends JPanel {
         private JPanel headersPanel;
@@ -572,7 +545,6 @@ public class RequestSettingPanel extends EmptyPanel {
 
     /**
      * inner class for query panel
-     * it use to create object for query panel
      */
     private class QueryPanel extends JPanel {
         private HeaderPanel headerPanel;
@@ -613,7 +585,6 @@ public class RequestSettingPanel extends EmptyPanel {
 
     /**
      * inner class for proxy panel
-     * it use to create panel to set server proxy for each request
      */
     private class ProxyPanel extends JPanel {
         private JTextField ip;

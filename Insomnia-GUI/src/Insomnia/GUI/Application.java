@@ -18,8 +18,6 @@ import java.util.regex.Pattern;
 
 /**
  * the application class
- * its hold array of work spaces and gui panels
- * its extends JFrame class
  *
  * @author hadi
  * @version 1.0
@@ -34,10 +32,7 @@ public class Application extends JFrame {
     private CloseOperation closeOperation;
     public static boolean FOLLOW_REDIRECT;
 
-    /**
-     * constructor of this class
-     * its use to create new object of this class
-     */
+
     public Application() {
         changeLookAndFeel();
         framePanel = new JPanel(new BorderLayout());
@@ -83,11 +78,7 @@ public class Application extends JFrame {
         });
     }
 
-    /**
-     * it use to create and config menu bar of application frame
-     *
-     * @return menu object
-     */
+
     private JMenuBar getToolBar() {
         JMenuBar menuBar = new JMenuBar();
         JMenu Application = getApplicationMenu();
@@ -102,11 +93,7 @@ public class Application extends JFrame {
         return menuBar;
     }
 
-    /**
-     * it use to config application menu
-     *
-     * @return application menu object
-     */
+
     private JMenu getApplicationMenu() {
         JMenu Application = new JMenu("Application");
         JMenuItem Exit = new JMenuItem("Exit", 'e');
@@ -124,11 +111,7 @@ public class Application extends JFrame {
         return Application;
     }
 
-    /**
-     * it use to config option menu item
-     *
-     * @return option menu item
-     */
+    
     private JMenuItem getOptionItem() {
         String[] options = new String[0];
         try {
@@ -177,12 +160,7 @@ public class Application extends JFrame {
         return toReturn;
     }
 
-    /**
-     * it use to create theme selector panel
-     *
-     * @param okButton button to set theme
-     * @return theme selector panel
-     */
+
     private JPanel getThemeSelector(JButton okButton) {
         JPanel themeSelector = new JPanel(new GridLayout(2, 4));
         themeSelector.setBorder(new TitledBorder(new LineBorder(Color.black, 2), "Theme"));
@@ -210,11 +188,7 @@ public class Application extends JFrame {
         return themeSelector;
     }
 
-    /**
-     * it use to get view menu object
-     *
-     * @return object of view menu
-     */
+    
     private JMenu getViewMenu() {
         JMenu view = new JMenu("View");
         JMenuItem fullScreen = new JMenuItem("Toggle Full Screen");
@@ -251,11 +225,7 @@ public class Application extends JFrame {
         return view;
     }
 
-    /**
-     * it use to create help ,enu object
-     *
-     * @return help menu object
-     */
+
     private JMenu getHelpMenu() {
         JMenu help = new JMenu("Help");
         JMenuItem about = new JMenuItem("About");
@@ -283,9 +253,7 @@ public class Application extends JFrame {
         return help;
     }
 
-    /**
-     * it use to change look and feel first time
-     */
+    
     private void changeLookAndFeel() {
         String[] options = new String[0];
         try {
@@ -298,7 +266,6 @@ public class Application extends JFrame {
 
     /**
      * inner class to create insomnia button
-     * it is manage work space and access use to switch between work spaces
      */
     private class InsomniaButton extends JButton {
         private JLabel workSpaceName;
@@ -306,10 +273,7 @@ public class Application extends JFrame {
         private JMenu workSpaceSelector;
         private ArrayList<JMenuItem> menuItems;
 
-        /**
-         * constructor for this class
-         * it use to create new object of insomnia button
-         */
+
         public InsomniaButton() {
             this.setOpaque(true);
             this.setBackground(new Color(186, 76, 255));
@@ -346,11 +310,7 @@ public class Application extends JFrame {
             return true;
         }
 
-        /**
-         * it use to create object of popUp menu for this button
-         *
-         * @return object of popUp menu
-         */
+        
         private JPopupMenu getInsomniaMenu() {
             JPopupMenu toReturn = new JPopupMenu();
             JMenuItem WorkSpaceSetting = new JMenuItem("Change WorkSpace Name");
@@ -387,30 +347,19 @@ public class Application extends JFrame {
             return toReturn;
         }
 
-        /**
-         * it use to set text of this button
-         */
+
         private void updateButton() {
             this.workSpaceName.setText(current.getName());
         }
 
-        /**
-         * setter for current workSpace
-         * when user select another work space application call this method
-         *
-         * @param current selected work space
-         */
+        
         private void setCurrentWorkSpace(WorkSpace current) {
             Application.this.current.setSpace(current);
             updateButton();
             this.setBackground(new Color(186, 76, 255));
         }
 
-        /**
-         * it use to add new work space to work space list
-         *
-         * @param newWorkSpace new work space object
-         */
+        
         private void addWorkSpace(WorkSpace newWorkSpace) {
             workSpaces.add(newWorkSpace);
             setCurrentWorkSpace(newWorkSpace);
@@ -430,9 +379,7 @@ public class Application extends JFrame {
         }
     }
 
-    /**
-     * it use to determine action if the applicatin when user clicked exit button
-     */
+    
     private class CloseOperation extends WindowAdapter {
         private SystemTray systemTray;
         private TrayIcon trayIcon;
@@ -455,7 +402,6 @@ public class Application extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     Application.this.dispose();
                     System.exit(0);
-                    //todo add save method
                 }
             });
             show.addActionListener(new ActionListener() {

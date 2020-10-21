@@ -5,28 +5,13 @@ import java.util.Scanner;
 
 /**
  * the user player class
- * it is inheritance from player class
- * its used to creating user player for uno game
  */
 public class UserPlayer extends Player {
-    /**
-     * constructor for user player class
-     * its used to create new object of this class
-     *
-     * @param name      user name
-     * @param gameBoard the game in which player plays
-     */
+ 
     public UserPlayer(String name, GameSystem gameBoard) {
         super(name, gameBoard);
     }
 
-    /**
-     * this is an Override of putNonDrawCard
-     * its used when last card isn't draw or wild draw card
-     *
-     * @param lastCard object of last card in game
-     * @return new card which player selected
-     */
     @Override
     protected Card putNonDrawCard(Card lastCard) {
         Scanner scanner = new Scanner(System.in);
@@ -53,13 +38,6 @@ public class UserPlayer extends Player {
         return toPut;
     }
 
-    /**
-     * it used when user most put specific card type such as wild or wild draw card
-     *
-     * @param t       specific cart type class
-     * @param message message to show user
-     * @return selected card
-     */
     @Override
     protected Card putSpecificType(Class<?> t, String message) {
         Scanner scanner = new Scanner(System.in);

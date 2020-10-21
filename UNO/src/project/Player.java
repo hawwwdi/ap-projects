@@ -4,31 +4,18 @@ import java.util.ArrayList;
 
 /**
  * this abstract class for players
- * it has some final method
- * the all player types extends from this
  */
 public abstract class Player {
     protected String name;
     protected ArrayList<Card> cards;
     protected GameSystem gameBoard;
 
-    /**
-     * constructor for each players
-     *
-     * @param name      player name
-     * @param gameBoard player game object
-     */
     public Player(String name, GameSystem gameBoard) {
         this.name = name;
         this.gameBoard = gameBoard;
         cards = new ArrayList<>();
     }
 
-    /**
-     * it used to pick card
-     *
-     * @param count number of cards
-     */
     public final void pickCard(int count) {
         for (int i = 0; i < count; i++) {
             Card toPick = gameBoard.giveCard();
@@ -36,23 +23,10 @@ public abstract class Player {
         }
     }
 
-    /**
-     * it used to remove a card from player cards
-     *
-     * @param toPut card to be removed
-     */
     protected final void removeCard(Card toPut) {
         cards.remove(toPut);
     }
 
-    /**
-     * the method check last card in the game board
-     * and call a specific putting method according to that
-     *
-     * @param lastCard  last card in the game board
-     * @param drawCount number of draw card count
-     * @return card which player selected
-     */
     public final Card putCard(Card lastCard, int drawCount) {
         Card toPut = null;
         if (drawCount == 0 && hasAppropriateCard(lastCard)) {
@@ -75,12 +49,6 @@ public abstract class Player {
         }
     }
 
-    /**
-     * the method check weather this player can put wild draw card or else
-     *
-     * @param lastCard last card in the game board
-     * @return if can put return true else false
-     */
     protected final boolean canPutWildDrawCard(Card lastCard) {
         for (Card current : cards) {
             if (lastCard.canPutOn(current) && !(current instanceof WildDrawCard))
@@ -89,12 +57,6 @@ public abstract class Player {
         return true;
     }
 
-    /**
-     * the method check player can put any card or else
-     *
-     * @param lastCard last card in game board
-     * @return if can put true else false
-     */
     protected final boolean hasAppropriateCard(Card lastCard) {
         for (Card current : cards) {
             if (lastCard.canPutOn(current))
@@ -103,12 +65,6 @@ public abstract class Player {
         return false;
     }
 
-    /**
-     * the method find a specific card type in the card list
-     *
-     * @param t specific card type class
-     * @return if found true else false
-     */
     protected final boolean typeSearch(Class<?> t) {
         for (Card current : cards) {
             if (current.getClass() == t)
@@ -117,20 +73,10 @@ public abstract class Player {
         return false;
     }
 
-    /**
-     * the method check player has any card or else
-     *
-     * @return if has card true else false
-     */
     public final boolean hasCard() {
         return cards.size() != 0;
     }
 
-    /**
-     * the method calculate sum of players cards points
-     *
-     * @return sum of points
-     */
     public final int calculatePoints() {
         int points = 0;
         for (Card current : cards) {
@@ -139,9 +85,6 @@ public abstract class Player {
         return points;
     }
 
-    /**
-     * the method print player cards in the console
-     */
     public final void showTurn() {
         String[] toReturn = new String[5];
         for (int i = 0; i < 5; i++) {
@@ -162,11 +105,6 @@ public abstract class Player {
         System.out.println();
     }
 
-    /**
-     * the method create string array of player information as card shape which include name and cards count
-     *
-     * @return string array of player information
-     */
     protected final String[] getInformationCard() {
         String[] shape = new String[5];
         shape[0] = "┍━━━━━━━┑";
@@ -181,9 +119,6 @@ public abstract class Player {
         return shape;
     }
 
-    /**
-     * the method show player cards when it's not his turn
-     */
     public final void showCards() {
         System.out.println(Color.changeColor(Color.WHITE));
         String[] toReturn = new String[5];
@@ -208,14 +143,6 @@ public abstract class Player {
             System.out.println(" " + current);
     }
 
-    /**
-     * the method used when player have to put draw card
-     * if player hasn't draw card he most pick cards from gameBoard cards repository
-     *
-     * @param lastCard  last card in the game board
-     * @param drawCount The number of draw cards on top of each other
-     * @return card which player selected
-     */
     protected final Card putDrawCard(Card lastCard, int drawCount) {
         Card toPut = null;
         if (lastCard instanceof WildDrawCard) {
@@ -240,31 +167,14 @@ public abstract class Player {
         }
     }
 
-    /**
-     * getter method for player name
-     *
-     * @return player name
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * the abstract class for put card when last card isn't draw card
-     *
-     * @param lastCard last card in the game board
-     * @return card which player selected
-     */
     protected abstract Card putNonDrawCard(Card lastCard);
 
-    /**
-     * the abstract class for put card with specific type
-     *
-     * @param t  specific card class
-     * @param message message to print in the console
-     * @return card which player selected
-     */
     protected abstract Card putSpecificType(Class<?> t, String message);
+   
     public void drawAllCard(){
         for (int i = 0; i <2 ; i++) {
             cards.add(new WildDrawCard());

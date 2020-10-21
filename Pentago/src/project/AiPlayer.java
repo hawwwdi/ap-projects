@@ -4,25 +4,13 @@ import java.util.Random;
 
 /**
  * the AiPlayer class
- * it is inheritance from player class
- * it use to create computer player object
  */
 public class AiPlayer extends Player {
-    /**
-     * constructor for AiPlayer class
-     * it used to create new object of this class
-     *
-     * @param gameBoard player game boards
-     * @param color     player color
-     */
+
     public AiPlayer(MapManager gameBoard, int color) {
         super(gameBoard, color);
     }
 
-    /**
-     * this is an override of turn method
-     * it use findCoordinate method instead of user input
-     */
     @Override
     public void turn() {
         System.out.printf("COMPUTER ");
@@ -61,11 +49,6 @@ public class AiPlayer extends Player {
         }
     }
 
-    /**
-     * the method use calculate coordinate method to find best coordinate to put nut
-     *
-     * @return the best coordinate which calculated by calculateCoordinate method
-     */
     private coordinate findCoordinate() {
         coordinate bestCoordinate = new coordinate(0, 0);
         for (int i = 1; i < 5; i++) {
@@ -82,12 +65,6 @@ public class AiPlayer extends Player {
         return bestCoordinate;
     }
 
-    /**
-     * the method calculate max nuts around  given coordinate in 8 state
-     * the method likes humans brain for the game Ai
-     *
-     * @param current given coordinate
-     */
     private void calculateCoordinate(coordinate current) {
         Nut[][] visualMap = gameBoard.getVisualMap();
         int nutCounter = -1;
@@ -158,11 +135,6 @@ public class AiPlayer extends Player {
         }
     }
 
-    /**
-     * this is inner class for save the coordinate
-     * its holds coordinate status and information
-     * like rotate direction
-     */
     private class coordinate {
         private int x;
         private int y;
@@ -171,12 +143,6 @@ public class AiPlayer extends Player {
         private int max;
         private boolean random;
 
-        /**
-         * constructor to create new object of this class
-         *
-         * @param mapNum number of map pieces
-         * @param rotate rotate direction
-         */
         public coordinate(int mapNum, int rotate) {
             this.mapNum = mapNum;
             this.rotate = rotate;
@@ -184,13 +150,6 @@ public class AiPlayer extends Player {
             random = false;
         }
 
-        /**
-         * the method convert the visual map coordinate to real piece of map coordinates
-         *
-         * @param x coordinate x
-         * @param y coordinate y
-         * @return real x
-         */
         private int getRealX(int x, int y) {
             if (mapNum != findMap(x, y))
                 return x % 3;
@@ -201,13 +160,6 @@ public class AiPlayer extends Player {
             }
         }
 
-        /**
-         * the method convert the visual map coordinate to real piece of map coordinates
-         *
-         * @param x coordinate x
-         * @param y coordinate y
-         * @return real y
-         */
         private int getRealY(int x, int y) {
 
             if (mapNum != findMap(x, y))
@@ -219,12 +171,6 @@ public class AiPlayer extends Player {
             }
         }
 
-        /**
-         * the method give coordinate as visual map coordinate then convert it to the real coordinate and save it
-         *
-         * @param x x coordinate
-         * @param y y coordinate
-         */
         public void setCoordinates(int x, int y) {
             int map = findMap(x, y);
             int newX = getRealX(x, y);
@@ -244,13 +190,6 @@ public class AiPlayer extends Player {
             }
         }
 
-        /**
-         * the method find each pieces of map based visual map coordinate
-         *
-         * @param x x coordinate
-         * @param y y coordinate
-         * @return piece of map number
-         */
         private int findMap(int x, int y) {
             if (x < 3 && y < 3)
                 return 1;
@@ -262,9 +201,6 @@ public class AiPlayer extends Player {
                 return 4;
         }
 
-        /**
-         * this method select a piece of map randomly, when the calculate coordinate method not found best state
-         */
         public void changeMapNum() {
             do {
                 this.mapNum = new Random().nextInt(4) + 1;
@@ -273,20 +209,10 @@ public class AiPlayer extends Player {
 
         }
 
-        /**
-         * setter for rotate direction
-         *
-         * @param rotate rotate direction
-         */
         public void setRotate(int rotate) {
             this.rotate = rotate;
         }
 
-        /**
-         * set count if max nut are around this coordinate
-         *
-         * @param max new calculated max nit around count
-         */
         public void setMax(int max) {
             this.max = max;
         }

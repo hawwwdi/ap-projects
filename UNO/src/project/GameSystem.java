@@ -6,7 +6,6 @@ import java.util.Random;
 
 /**
  * this is the gameSystem class
- * its handle a new uno game and its players and cards
  */
 public class GameSystem {
     private Player[] players;
@@ -18,13 +17,6 @@ public class GameSystem {
     private int drawCardCount;
     private HashMap<Integer, String> rotateName;
 
-    /**
-     * constructor for this class
-     * it used to create new object of uno game
-     *
-     * @param cards           game cards
-     * @param numberOfPlayers number of players
-     */
     public GameSystem(ArrayList<Card> cards, int numberOfPlayers) {
         this.cards = cards;
         this.numberOfPlayers = numberOfPlayers;
@@ -35,20 +27,11 @@ public class GameSystem {
         rotateName.put(-1, "anticlockwise ↺");
     }
 
-    /**
-     * setter method for game players
-     *
-     * @param players array of players
-     */
     public void setPlayers(Player[] players) {
 
         this.players = players;
     }
 
-    /**
-     * play game method
-     * when we call this method the game begin
-     */
     public void play() {
         turn = new Random().nextInt(numberOfPlayers);
         do {
@@ -78,12 +61,6 @@ public class GameSystem {
         System.out.println("finished");
     }
 
-    /**
-     * the method check the last card on the game board
-     * if the last card is specific car such as draw or revers the method change the game state
-     *
-     * @param isFirstCard shows the card is first card in game or else
-     */
     private void checkLastCard(boolean isFirstCard) {
         if (lastCard instanceof SkipCard) {
             if (!isFirstCard)
@@ -112,11 +89,6 @@ public class GameSystem {
         }
     }
 
-    /**
-     * the method change the last card in the game
-     *
-     * @param newCard new card which putted
-     */
     private void updateLastCard(Card newCard) {
         if (newCard != null) {
             if (lastCard instanceof Wild)
@@ -135,19 +107,11 @@ public class GameSystem {
         }
     }
 
-    /**
-     * the method shift the players turn
-     */
     private void shiftTurn() {
         turn += rotateDirection;
         turn = turn == -1 ? numberOfPlayers - 1 : turn % numberOfPlayers;
     }
 
-    /**
-     * the method give a card from game cards to a player
-     *
-     * @return card for player
-     */
     public Card giveCard() {
         Random random = new Random();
         int cardIndex = random.nextInt(cards.size());
@@ -156,11 +120,6 @@ public class GameSystem {
         return toReturn;
     }
 
-    /**
-     * this method check weather any player hasn't card or else
-     *
-     * @return if found a player who hasn't card true else false
-     */
     private boolean finishGame() {
         for (Player current : players)
             if (!current.hasCard())
@@ -168,9 +127,6 @@ public class GameSystem {
         return false;
     }
 
-    /**
-     * this method print game score board at end of each turn
-     */
     private void printScoreBoard() {
         Score[] playersScores = new Score[numberOfPlayers];
         for (int i = 0; i < numberOfPlayers; i++) {
@@ -194,7 +150,7 @@ public class GameSystem {
     }
 
     /**
-     * this is an inner class to save each player name and score to sort in the print core board method
+     * this is an inner class for saving  players name and score 
      */
     private class Score {
         private String name;
@@ -211,9 +167,6 @@ public class GameSystem {
         }
     }
 
-    /**
-     * the method print game board and last card each turn
-     */
     private void print() {
         for (int i = 0; i < players.length; i++) {
             if (i != turn)
@@ -231,11 +184,6 @@ public class GameSystem {
         System.out.println(players[turn].getName() + " your turn!");
     }
 
-    /**
-     * the method return game information as String array
-     *
-     * @return string array of game information
-     */
     private String[] information() {
         String[] shape = new String[5];
         shape[0] = Color.changeColor(Color.CYAN) + "rotate direction:" + Color.changeColor(Color.WHITE) + "     ║";

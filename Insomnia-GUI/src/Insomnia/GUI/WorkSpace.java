@@ -24,8 +24,6 @@ import java.util.regex.Pattern;
 
 /**
  * the work space class
- * its extends JPanal
- * its hold a JTree of request and folders
  */
 public class WorkSpace extends JPanel implements TreeSelectionListener {
     private String name;
@@ -35,12 +33,7 @@ public class WorkSpace extends JPanel implements TreeSelectionListener {
     private JPanel treePanel;
     private JSplitPane split;
 
-    /**
-     * constructor for this class
-     *
-     * @param name      work space name
-     * @param showSpace split to show details of work spece requests
-     */
+
     public WorkSpace(String name, JSplitPane showSpace) {
         this.name = name;
         this.split = showSpace;
@@ -60,15 +53,8 @@ public class WorkSpace extends JPanel implements TreeSelectionListener {
         this.add(scroller, BorderLayout.CENTER);
     }
 
-    /**
-     * this is an overLoad for this class constructor
-     * it use to load work spaces from save files
-     * @param workSpace save file object
-     * @param showSpace split pane to show
-     */
     public WorkSpace(File workSpace, JSplitPane showSpace) {
         this.name = workSpace.getName();
-        //todo check name
         this.split = showSpace;
         requests = new ArrayList<>();
         Folder root = new Folder(name);
@@ -87,11 +73,6 @@ public class WorkSpace extends JPanel implements TreeSelectionListener {
         this.add(scroller, BorderLayout.CENTER);
     }
 
-    /**
-     * it use to load JTree root from saved files
-     * @param workSpace saved file folder
-     * @param root JTree root node
-     */
     private void loadRoot(File workSpace, Folder root) {
         for (File curr : workSpace.listFiles()) {
             if (curr.isDirectory()) {
@@ -107,11 +88,6 @@ public class WorkSpace extends JPanel implements TreeSelectionListener {
         }
     }
 
-    /**
-     * the save method
-     * it use to save work spaces details in a folder
-     * it use the file utils class
-     */
     public void save() {
         for (DefaultMutableTreeNode folder : requests) {
             if (folder instanceof Folder) {
@@ -126,40 +102,19 @@ public class WorkSpace extends JPanel implements TreeSelectionListener {
         }
     }
 
-    /**
-     * setter for work spacce name
-     *
-     * @param name new name
-     */
     public void setName(String name) {
         this.name = name;
         ((Folder) rootModel.getRoot()).setName(name);
     }
 
-    /**
-     * getter for work space name
-     *
-     * @return work space name
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * the method compares two work paces with their names
-     *
-     * @param name second work space name
-     * @return compare result
-     */
     public boolean equalsByName(String name) {
         return this.name.equals(name);
     }
 
-    /**
-     * this is event handler method for tree object
-     *
-     * @param e input event
-     */
     @Override
     public void valueChanged(TreeSelectionEvent e) {
         DefaultMutableTreeNode selected = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
@@ -173,10 +128,6 @@ public class WorkSpace extends JPanel implements TreeSelectionListener {
         split.updateUI();
     }
 
-    /**
-     * the folder class
-     * it use to groupingg requests
-     */
     private class Folder extends DefaultMutableTreeNode {
         private String name;
 
@@ -202,9 +153,6 @@ public class WorkSpace extends JPanel implements TreeSelectionListener {
         }
     }
 
-    /**
-     * it use to change theme for all requests in this work space
-     */
     public void updateTheme() {
         TreePath leaf = tree.getSelectionPath();
         Theme current = LafManager.getTheme();
@@ -223,21 +171,12 @@ public class WorkSpace extends JPanel implements TreeSelectionListener {
         tree.setSelectionPath(leaf);
     }
 
-    /**
-     * the search bar class
-     * it is search bar of requests list panel
-     */
     private class SearchBar extends JPanel {
         private JComboBox folders;
         private JComboBox methods;
         private Folder root;
         private SearchTextField filter;
 
-        /**
-         * constructor for search bar class
-         *
-         * @param root root node of requests tree's
-         */
         public SearchBar(Folder root) {
             this.setLayout(new BorderLayout());
             folders = new JComboBox();
@@ -251,11 +190,6 @@ public class WorkSpace extends JPanel implements TreeSelectionListener {
             this.add(addReq, BorderLayout.EAST);
         }
 
-        /**
-         * it use to config search text field and actions
-         *
-         * @return object of search text field
-         */
         private SearchTextField getFilter() {
             SearchTextField toReturn = new SearchTextField("filter");
             toReturn.addSearchListener(new SearchListener() {
@@ -269,11 +203,6 @@ public class WorkSpace extends JPanel implements TreeSelectionListener {
             return toReturn;
         }
 
-        /**
-         * it use to find result of searched string
-         *
-         * @param searchString user input string
-         */
         private void showResult(String searchString) {
             DefaultMutableTreeNode currentNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
             DefaultMutableTreeNode foundNode = null;
@@ -305,11 +234,6 @@ public class WorkSpace extends JPanel implements TreeSelectionListener {
             }
         }
 
-        /**
-         * it use to config add request button and add action to this button
-         *
-         * @return add req button object
-         */
         private JButton getAddReqButton() {
             JButton add = new JButton("➕");
             add.setMargin(new Insets(0, 0, 2, 0));
@@ -348,11 +272,6 @@ public class WorkSpace extends JPanel implements TreeSelectionListener {
             return add;
         }
 
-        /**
-         * its use to create dialog object for add req button
-         *
-         * @return dialog object for add req button
-         */
         private JDialog getAddReqDialog() {
             JDialog toReturn = new JDialog();
             JTextField reqName = new JTextField();
@@ -383,22 +302,10 @@ public class WorkSpace extends JPanel implements TreeSelectionListener {
             return toReturn;
         }
 
-        /**
-         * ot use to add req to specific folder in requests tree's
-         *
-         * @param name   new req name
-         * @param folder new req folder
-         * @param method new req method type
-         */
         private void addReq(String name, Folder folder, Method method) {
             folder.addReq(new Request(name, method, split));
         }
 
-        /**
-         * it use to add new folder to requests tree
-         *
-         * @param name new folder name
-         */
         private void addFolder(String name) {
             Folder tmp = new Folder(name);
             rootModel.insertNodeInto(tmp, root, root.getChildCount());

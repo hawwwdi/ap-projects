@@ -7,7 +7,6 @@ import java.util.HashMap;
 
 /**
  * the file utils class
- * all file working is done here
  */
 public class FileUtils {
     private static final String SAVE_PATH = "./save/";
@@ -21,10 +20,6 @@ public class FileUtils {
         System.out.println("Creating " + RESPONSE_SAVE_PATH + " directory is successful: " + new File(RESPONSE_SAVE_PATH).mkdirs());
     }
 
-    /**
-     * this method returns array of Gui saved workSpace
-     * @return array of Gui saved workSpace
-     */
     public static File[] getGuiWorkSpaces() {
         return new File(GUI_SAVE_PATH).listFiles();
     }
@@ -41,7 +36,7 @@ public class FileUtils {
     }
 
     /**
-     * this method show all saved request in given list
+     * this method shows all saved request in given list
      * @param listName selected list
      */
     public static void showRequestsList(String listName) {
@@ -56,10 +51,6 @@ public class FileUtils {
             System.err.println("list " + listName + "not found!!!");
     }
 
-    /**
-     * it use to create new req list
-     * @param name new list name
-     */
     public static void addList(String name) {
         File newList = new File(REQUESTS_SAVE_PATH + name);
         if (!newList.exists())
@@ -68,11 +59,6 @@ public class FileUtils {
             System.err.println("list \'" + name + "\' already exists!");
     }
 
-    /**
-     * it use to save a request model to given list
-     * @param model model to save
-     * @param listName list name
-     */
     public static void saveRequest(RequestModel model, String listName) {
         if (!new File(REQUESTS_SAVE_PATH + listName).exists())
             addList(listName);
@@ -80,14 +66,6 @@ public class FileUtils {
         writeReq(filePath, model);
     }
 
-    /**
-     * this an overload of save request model
-     * it use to save gui request
-     * @param model request to save
-     * @param workSpaceName request work space
-     * @param listName request list name
-     * @param name request name
-     */
     public static void saveRequest(RequestModel model, String workSpaceName, String listName, String name) {
         File saveFolder = new File(GUI_SAVE_PATH + workSpaceName + File.separator + listName);
         saveFolder.mkdirs();
@@ -95,11 +73,6 @@ public class FileUtils {
         writeReq(filePath, model);
     }
 
-    /**
-     * it use to write a req model to a txt file
-     * @param filePath file save path
-     * @param model req model
-     */
     private static void writeReq(String filePath, RequestModel model) {
         try (DataOutputStream writer = new DataOutputStream(new FileOutputStream(filePath))) {
             writer.writeUTF(model.getUrl());
@@ -120,13 +93,6 @@ public class FileUtils {
         }
     }
 
-    /**
-     * it use to load a req model from saved files
-     * @param model reqModel object
-     * @param list reqModel list
-     * @param index req model index in the list
-     * @throws FileNotFoundException
-     */
     public static void loadRequest(RequestModel model, String list, int index) throws FileNotFoundException {
         File selectedList = new File(REQUESTS_SAVE_PATH + list);
         if (selectedList.exists()) {
@@ -140,12 +106,6 @@ public class FileUtils {
             throw new FileNotFoundException("list " + list + " not exists!!1");
     }
 
-    /**
-     * it use to load request of a work space and put these in a hash map
-     * @param workSpaceName list workSpace name
-     * @param listName list to load
-     * @return hash map of request name -> reqModel
-     */
     public static HashMap<String, RequestModel> loadRequests(String workSpaceName, String listName) {
         HashMap<String, RequestModel> toReturn = new HashMap<String, RequestModel>();
         File listFolder = new File(GUI_SAVE_PATH + workSpaceName + File.separator + listName);
@@ -160,11 +120,6 @@ public class FileUtils {
 
     }
 
-    /**
-     * it use to load a saved request file from given path
-     * @param model model to be load
-     * @param selected file path
-     */
     public static void loadReq(RequestModel model, File selected) {
         DataInputStream reader = null;
         try {
@@ -188,23 +143,12 @@ public class FileUtils {
         }
     }
 
-    /**
-     * it use to get appropriate name for saving given request
-     * @param model given req
-     * @param list list name
-     * @return appropriate name
-     */
     private static String getFileName(RequestModel model, String list) {
         StringBuilder path = new StringBuilder(REQUESTS_SAVE_PATH + list + "\\");
         path.append(model.toString().substring(0, 82).replaceAll("[\\\\/:\\*\\?\"\\>\\<\\|]", "-") + ".txt");
         return path.toString();
     }
 
-    /**
-     * it use to save a request response body as a file
-     * @param toSave response body string
-     * @param model request model
-     */
     public static void saveResponse(String toSave, RequestModel model) {
         if (model.getSavedResponseName().equals(""))
             return;
@@ -219,11 +163,6 @@ public class FileUtils {
         }
     }
 
-    /**
-     * it use to save gui option in a file
-     * @param toSave gui option as String
-     * @param name saved file name
-     */
     public static void saveObject(String toSave, String name) {
         try (DataOutputStream writer =
                      new DataOutputStream(new FileOutputStream(SAVE_PATH + File.separator + name + ".txt"))) {
@@ -233,12 +172,6 @@ public class FileUtils {
         }
     }
 
-    /**
-     * it use to load gui option from disk
-     * @param name file name
-     * @return option as string
-     * @throws FileNotFoundException
-     */
     public static String loadObject(String name) throws FileNotFoundException {
         File Load = new File(SAVE_PATH + File.separator + name + ".txt");
         try {

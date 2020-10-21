@@ -1,17 +1,9 @@
 package project;
 
-/**
- * Map class
- * any object of this class is a game board
- */
 public class Map {
     private Nut[][] map;
     private int[] nutCount;
 
-    /**
-     * constructor for map class
-     * it is initialize the map blocks
-     */
     public Map() {
         map = new Nut[10][10];
         for (int i = 0; i < 10; i++) {
@@ -28,13 +20,6 @@ public class Map {
         nutCount[1] = 2;
     }
 
-    /**
-     * this method check that player can put a nut at (x, y) coordinate or else
-     * @param nutColor payer nut color
-     * @param x x coordinate
-     * @param y y coordinate
-     * @return if can put at (x, y) return true else return false
-     */
     public boolean putNut(int nutColor, int x, int y) {
         if (isValid(nutColor, x, y, true)) {
             System.out.println("put successful");
@@ -45,16 +30,7 @@ public class Map {
         }
     }
 
-    /**
-     * the method check the give coordinate to put a new nut with given color
-     * @param color nut to put color
-     * @param x coordinate x
-     * @param y coordinate y
-     * @param edit if it is true map will update and change  the nuts else just check the given coordinate for putting a nit with given color
-     * @return if we can put nut at given coordinate this method return true else return false
-     */
     public boolean isValid(int color, int x, int y, boolean edit) {
-        //they are directions to be checked
         int[][] direction = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}, {1, 1}, {1, -1}, {-1, 1}, {-1, -1}};
         if (map[x][y].getColor() != -1) {
             System.out.println("block is full");
@@ -82,15 +58,6 @@ public class Map {
         return valid;
     }
 
-    /**
-     * it is changed the map
-     * start from given coordinate and change map color to the given color in the given direction until block colors is different from given color
-     * @param color color of the new nut
-     * @param x coordinate x
-     * @param y coordinate y
-     * @param signX direction x
-     * @param signY direction y
-     */
     private void updateMap(int color, int x, int y, int signX, int signY) {
         int primeColor = PrimeColor(color);
         do {
@@ -104,11 +71,6 @@ public class Map {
         nutCount[color]--;
     }
 
-    /**
-     * this method return opNut color
-     * @param color new nut color
-     * @return opNut color
-     */
     private int PrimeColor(int color) {
         if (color == 1)
             return 0;
@@ -116,13 +78,6 @@ public class Map {
             return 1;
     }
 
-    /**
-     * this method use to print game board
-     * it use uni code character
-     * 0 : white circle
-     * 1: black circle
-     * -1: blank blocks
-     */
     public void print() {
         System.out.println("white: " + nutCount[0] + " || black: " + nutCount[1]);
         System.out.println("    A    B     C    D    E     F    G    H ");
@@ -136,9 +91,6 @@ public class Map {
         resetMap();
     }
 
-    /**
-     * this method reset all valid blocks for putting nuts
-     */
     private void resetMap() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -147,9 +99,6 @@ public class Map {
         }
     }
 
-    /**
-     * this method determine the game winner
-     */
     public void showResult() {
         if (nutCount[0] > nutCount[1])
             System.out.println("white win");
@@ -157,10 +106,6 @@ public class Map {
             System.out.println("black win!!");
     }
 
-    /**
-     * this is a getter method for map array
-     * @return map array
-     */
     public Nut[][] getMap() {
         return map;
     }

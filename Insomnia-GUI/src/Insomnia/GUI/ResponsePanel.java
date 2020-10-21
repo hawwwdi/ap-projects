@@ -26,19 +26,11 @@ import static org.fife.ui.rsyntaxtextarea.SyntaxConstants.*;
 
 /**
  * response panel class
- * it is extends empty panel class
- * each request has specific response panel
  */
 public class ResponsePanel extends EmptyPanel {
     private ResponseModel model;
     private boolean ok;
 
-    /**
-     * constructor for this panel
-     * it use to create new object of this class
-     *
-     * @param model response model received from server
-     */
     public ResponsePanel(ResponseModel model) {
         this.model = model;
         ok = !"null".equals(model.getStatus());
@@ -46,20 +38,12 @@ public class ResponsePanel extends EmptyPanel {
         configCenterPanel();
     }
 
-    /**
-     * it use to config up panel
-     * and add components to this panel
-     */
     private void configUpPanel() {
         upPanel.setLayout(new BorderLayout());
         JPanel upPanelBar = new UpPanelBar();
         upPanel.add(upPanelBar, BorderLayout.CENTER);
     }
 
-    /**
-     * inner class for up panel bar
-     * it holds tree JButton to show result
-     */
     private class UpPanelBar extends JPanel {
         public UpPanelBar() {
             this.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -88,9 +72,6 @@ public class ResponsePanel extends EmptyPanel {
         }
     }
 
-    /**
-     * it use to config center panel and add component to this panel
-     */
     private void configCenterPanel() {
         centerPanel.setLayout(new BorderLayout());
         JTabbedPane tabs = new JTabbedPane();
@@ -102,10 +83,6 @@ public class ResponsePanel extends EmptyPanel {
 
     }
 
-    /**
-     * inner class for message Body panel
-     * it is extends JPanel class
-     */
     private class MessageBodyPanel extends JPanel {
         private JScrollPane preview;
         private RSyntaxTextArea rawBody;
@@ -205,8 +182,6 @@ public class ResponsePanel extends EmptyPanel {
 
     /**
      * inner class for header panel
-     * it use JTable class
-     * and add some new mrthods to JTable
      */
     private class Header extends JPanel {
         JTable headers;

@@ -4,17 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * this game config class
- * it used to config a new uno game
+ * this is game config class
  */
 public class GameConfig {
-    /**
-     * the method create game cards object and game players
-     * and with created object, create a object of unoGame and return this
-     * @param users number of user players
-     * @param computers number of computer players
-     * @return GameSystem object of new game
-     */
+ 
     public GameSystem configGame(int users, int computers) {
         int numberOfPlayer = users + computers;
         int cardsPackCount = (int) Math.ceil(numberOfPlayer / 10d);

@@ -2,8 +2,6 @@ package project;
 
 /**
  * the map manger class
- * it is manage each piece of game board
- * and mange all are nuts in the game
  */
 public class MapManager {
     private Map[][] map;
@@ -11,10 +9,6 @@ public class MapManager {
     private final int SIZE = 2;
     private final int VisualSIZE = 3;
 
-    /**
-     * constructor for mapManger class
-     * it use to create new map manger object
-     */
     public MapManager() {
         map = new Map[SIZE][SIZE];
         for (int i = 0; i < SIZE; i++) {
@@ -26,38 +20,16 @@ public class MapManager {
         updateVisualMap();
     }
 
-    /**
-     * put nut method
-     * it use to put a new nut in the given coordinate with given color
-     *
-     * @param color new nut color
-     * @param x     x coordinate
-     * @param y     y coordinate
-     */
     public void putNut(int color, int x, int y) {
         Map selectedMap = findMap(x, y);
         selectedMap.putNut(color, x % 3, y % 3);
     }
 
-    /**
-     * the isEmpty method
-     * it is check the given coordinate is blank or full
-     *
-     * @param x x coordinate
-     * @param y y coordinate
-     * @return if it os empty true else false
-     */
     public boolean isEmpty(int x, int y) {
         Map selectedMap = findMap(x, y);
         return selectedMap.isEmpty(x % 3, y % 3);
     }
 
-    /**
-     * this method use to rotate selected map in given direction
-     *
-     * @param mapNum    selected map area
-     * @param direction rotate direction
-     */
     public void rotateMap(int mapNum, int direction) {
         if (mapNum == 1)
             map[0][0].rotate(direction);
@@ -70,10 +42,6 @@ public class MapManager {
         updateVisualMap();
     }
 
-    /**
-     * this is printMap method
-     * it use toString method if each Nut to print map
-     */
     public void printMap() {
         System.out.println("   1     2    3         4     5    6 ");
         for (int i = 0; i < 2 * VisualSIZE; i++) {
@@ -92,14 +60,6 @@ public class MapManager {
         }
     }
 
-    /**
-     * this method give a coordinate and return considered map piece
-     *
-     * @param x x coordinate
-     * @param y y coordinate
-     * @return considered map abject
-     */
-
     private Map findMap(int x, int y) {
         if (x < 3 && y < 3)
             return map[0][0];
@@ -111,9 +71,6 @@ public class MapManager {
             return map[1][1];
     }
 
-    /**
-     * the method update visual map when each pieces of the gameBoard changed
-     */
     private void updateVisualMap() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
@@ -125,11 +82,6 @@ public class MapManager {
         }
     }
 
-    /**
-     * this method check the Game completion condition with check result method
-     *
-     * @return Game completion state
-     */
     public boolean endGame() {
         boolean red = checkResult(0);
         boolean black = checkResult(1);
@@ -146,12 +98,6 @@ public class MapManager {
             return false;
     }
 
-    /**
-     * this method check all possible state for ending game
-     *
-     * @param color player color to check his win status
-     * @return if any state is exist return true else false
-     */
     private boolean checkResult(int color) {
         for (int i = 0; i < 2 * VisualSIZE; i++) {
             for (int j = 0; j < 2; j++) {
@@ -193,27 +139,15 @@ public class MapManager {
         }
         return false;
     }
-    /**
-     *the method check the input number is valid index if game map or else
-     * @param index input index
-     * @return if it is valid true else false
-     */
+ 
     private boolean checkValidIndex(int index) {
         return index >= 0 && index < 6;
     }
 
-    /**
-     * getter for game map array
-     * @return game map array
-     */
     public Map[][] getMap() {
         return map;
     }
 
-    /**
-     * getter for game visual map
-     * @return visual map array
-     */
     public Nut[][] getVisualMap() {
         return visualMap;
     }

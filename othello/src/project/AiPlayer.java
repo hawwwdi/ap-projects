@@ -2,24 +2,14 @@ package project;
 
 /**
  * this is Ai player class
- * it use a simple algorithm to compute best coordinate
- * it is inherited Player class
  */
 
 public class AiPlayer extends Player {
-    /**
-     * constructor for ai player class with refers to player class
-     * @param color ai player color
-     * @param gameBoard game game board
-     */
+
     public AiPlayer(int color, Map gameBoard) {
         super(color, gameBoard);
     }
 
-    /**
-     * it is an Override of putNut method in player class
-     * in this class computer enter the input instead of user input
-     */
     @Override
     public void putNut() {
         System.out.println("computer turn");
@@ -38,11 +28,6 @@ public class AiPlayer extends Player {
         }
     }
 
-    /**
-     * this method compute the computer out put coordinate
-     * it use nut count method for each valid coordinate and select the best coordinate
-     * @return out put coordinate in format "%d %c"
-     */
     public String coordinateFind() {
         Nut[][] map = gameBoard.getMap();
         int max = 0;
@@ -62,12 +47,6 @@ public class AiPlayer extends Player {
 
     }
 
-    /**
-     * the method calculate count of opNut around the given coordinate
-     * @param x coordinate x
-     * @param y coordinate y
-     * @return number of opNut
-     */
     private int nutCount(int x, int y) {
         int[][] direction = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}, {1, 1}, {1, -1}, {-1, 1}, {-1, -1}};
         Nut[][] map = gameBoard.getMap();
@@ -92,11 +71,6 @@ public class AiPlayer extends Player {
         return counter;
     }
 
-    /**
-     * this method return opNut color
-     * @param color new nut color
-     * @return opNut color
-     */
     private int PrimeColor(int color) {
         if (color == 1)
             return 0;

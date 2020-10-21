@@ -7,8 +7,6 @@ import java.util.regex.Pattern;
 
 /**
  * the requestModel class
- * it use to create model for http request
- * and holds all necessary data for http requests
  */
 public class RequestModel implements Serializable {
     private String url;
@@ -23,21 +21,7 @@ public class RequestModel implements Serializable {
     private String serverIp;
     private int port;
 
-    /**
-     * private constructor of this class
-     * it use to make copy of object of this class
-     *
-     * @param url
-     * @param method
-     * @param headers
-     * @param messageBody
-     * @param query
-     * @param showResponseHeaders
-     * @param followRedirect
-     * @param savedResponseName
-     * @param serverIp
-     * @param port
-     */
+    
     private RequestModel(String url, Method method, String headers
             , String messageBody, String query, boolean showResponseHeaders
             , boolean followRedirect, String savedResponseName, String serverIp, int port) {
@@ -54,12 +38,6 @@ public class RequestModel implements Serializable {
         this.port = port;
     }
 
-    /**
-     * constructor of this class
-     * it use to create object of this class
-     *
-     * @param followRedirect is follow redirect for this request on or else
-     */
     public RequestModel(boolean followRedirect) {
         this.followRedirect = followRedirect;
         this.method = Method.GET;
@@ -72,17 +50,11 @@ public class RequestModel implements Serializable {
         sendToServer = false;
     }
 
-    /**
-     * it use to create copy of this class objects
-     *
-     * @return copy of this class objects
-     */
     public RequestModel getCopy() {
         return new RequestModel(url, method, headers
                 , messageBody, query, showResponseHeaders
                 , followRedirect, savedResponseName, serverIp, port);
     }
-
 
     public String getUrl() {
         return url;

@@ -3,8 +3,7 @@ package project;
 import java.util.Scanner;
 
 /**
- * the main class
- * this is a simple java UNO
+ * this is a simple java UNO game
  * @author hadi
  * @version 1.0
  */

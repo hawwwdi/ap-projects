@@ -1,8 +1,7 @@
 package project;
 
 /**
- * it is colors enum
- * and we can change output color with this
+ * this is colors enum
  */
 public enum Color {
     RED, BLUE, GREEN, YELLOW, BLACK, WHITE, CYAN;
@@ -15,12 +14,6 @@ public enum Color {
     private static final String ANSI_PURPLE = "\u001B[35m";
     private static final String ANSI_CYAN = "\u001B[36m";
 
-    /**
-     * it use to change output color by using ANSI color
-     *
-     * @param color new output color
-     * @return ANSI color of selected color
-     */
     public static String changeColor(Color color) {
         if (color == RED)
             return ANSI_RED;
@@ -39,12 +32,6 @@ public enum Color {
         return ANSI_RESET;
     }
 
-    /**
-     * its used to assign specific character for each card colors
-     *
-     * @param color card color
-     * @return specific character for each color
-     */
     public static char getChar(Color color) {
         if (color == Color.RED)
             return  '♥';

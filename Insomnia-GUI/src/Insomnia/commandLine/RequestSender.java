@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 
 /**
  * the RequestSender class
- * it use to convert a request model to http request
+ * it converts a request model to http request
  * and send request to server then receive a response
  */
 public class RequestSender {
@@ -30,12 +30,6 @@ public class RequestSender {
     private HttpClient client;
     private RequestModel model;
 
-    /**
-     * constructor of this class
-     * it use to create new object of this class
-     *
-     * @param model model of http request
-     */
     public RequestSender(RequestModel model) {
         this.model = model;
         client = HttpClient.newBuilder().followRedirects(
@@ -45,12 +39,6 @@ public class RequestSender {
                 .build();
     }
 
-    /**
-     * it use to create http request with req model details
-     *
-     * @return HttpRequest of request model
-     * @throws IllegalArgumentException
-     */
     private HttpRequest getRequest() throws IllegalArgumentException {
         HttpRequest.Builder reqBuilder = HttpRequest.newBuilder()
                 .uri(URI.create(model.getUrlWithQuery()));
@@ -64,12 +52,6 @@ public class RequestSender {
         return reqBuilder.build();
     }
 
-    /**
-     * the send method
-     * it use to send http request and return its response
-     *
-     * @return request response
-     */
     public ResponseModel send() {
         System.out.println("sending...");
         ResponseModel response;
@@ -88,12 +70,6 @@ public class RequestSender {
         return response;
     }
 
-    /**
-     * this method send request object to server
-     * then give its response and create response model
-     *
-     * @return response model of request response
-     */
     private ResponseModel sendReq() {
         ResponseModel toReturn = new ResponseModel(model.getUrl());
         HttpResponse<byte[]> response = null;
@@ -143,14 +119,6 @@ public class RequestSender {
         return toReturn.toString();
     }*/
 
-    /**
-     * this method use to convert a formed string to Map with given delimiters
-     *
-     * @param data       formed string
-     * @param delimiter1 first delimiter
-     * @param delimiter2 second delimiter
-     * @return Map of form data
-     */
     private Map splitFormData(String data, String delimiter1, String delimiter2) {
         Map<String, String> toReturn = new HashMap();
         String[] splited = data.replaceAll("\"", "").split(delimiter1);
@@ -162,13 +130,7 @@ public class RequestSender {
         return toReturn;
     }
 
-    /**
-     * this method convert status code to status message
-     *
-     * @param status response status code
-     * @return status message
-     */
-    private String getStatus(int status) {
+    private static String getStatus(int status) {
         String code = String.valueOf(status);
         String[] statuses = ("100 Continue\n" +
                 "101 Switching Protocols\n" +
@@ -238,12 +200,6 @@ public class RequestSender {
         STRING, FORM_DATA, JSON
     }
 
-     /**
-     * this method used to detect a message body type
-     *
-     * @param messageBody request message body
-     * @return message body type
-     */
     private Type detectType(String messageBody) {
         if (messageBody.contains("Json"))
             return Type.JSON;
@@ -253,12 +209,6 @@ public class RequestSender {
             return Type.STRING;
     }
 
-    /**
-     * this method used to add message body header to request builder according to message body type
-     *
-     * @param builder
-     * @return
-     */
     private HttpRequest.Builder addMessageBodyHeader(HttpRequest.Builder builder) {
         Type bodyType = detectType(model.getMessageBody());
         switch (bodyType) {
@@ -272,11 +222,6 @@ public class RequestSender {
         return builder;
     }
 
-    /**
-     * this method used to create body publisher for request builder according to request body type
-     *
-     * @return Body publisher of requset
-     */
     private HttpRequest.BodyPublisher getBodyPublisher() {
         Type bodyType = detectType(model.getMessageBody());
         switch (bodyType) {
@@ -295,14 +240,7 @@ public class RequestSender {
         return HttpRequest.BodyPublishers.noBody();
     }
 
-    /**
-     * this method convert message body to byte array format
-     * add boundary between each part
-     *
-     * @param data Map of form data body
-     * @return body publisher of byte arrays form data
-     * @throws IOException
-     */
+
     private HttpRequest.BodyPublisher ofMultipartData(Map<String, String> data) throws IOException {
         LinkedList<byte[]> bytes = new LinkedList<byte[]>();
         byte[] separator = ("--" + BOUNDARY + "\r\nContent-Disposition: form-data; name=")

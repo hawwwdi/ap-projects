@@ -17,7 +17,6 @@ import static Insomnia.Utils.Method.methodRecognizer;
 
 /**
  * command recognizer class
- * it use to convert user input to requestModel
  *
  * @version 1.0
  */
@@ -26,13 +25,7 @@ public class CommandRecognizer {
     private static final String FILE_REGEX = ".+[.]\\w+";
     private static final String IP_REGEX = "^((0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)\\.){3}(0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)$";
 
-    /**
-     * recognizer method
-     * this method convert array of user input to requestModel field
-     *
-     * @param command Array of user inputs
-     * @return command is valid or else
-     */
+    
     public static boolean recognizeCommand(String[] command, ArrayList<RequestModel> reqModels) {
         RequestModel model = new RequestModel(false);
         reqModels.add(model);

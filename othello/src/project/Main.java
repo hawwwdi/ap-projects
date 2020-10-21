@@ -4,8 +4,7 @@ import java.util.Scanner;
 
 /**
  * this is a simple othello game whit java
- * this is Main class if user select 1 play with computer else play with another user
- * @author Farhan
+ * @author hadi
  * @version 1.0
  */
 public class Main {

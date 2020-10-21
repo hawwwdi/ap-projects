@@ -8,20 +8,14 @@ import java.util.Scanner;
 
 /**
  * this is main class
- * it is a simple java http client application
+ * java insomnia
+ * this is a simple java rest client
  *
- * @author hadi
+ * @author hadi abbasi
  * @version 1.0
  */
 public class Main {
-    public static void main(String[] args) {/*  while (true) {
-            System.out.println("inpuuuuuuuuuuuuut");
-            String in = scanner.nextLine();
-            if (in.equals("stop"))
-                break;
-            Console.main(in.split(" "));
-        }*/
-        //Console.main("http://apapi.haditabatabaei.ir/docs --proxy --ip localhost --port 100".split(" "));
-         Application app= new Application();
+    public static void main(String[] args) {
+        Application app= new Application();
     }
 }

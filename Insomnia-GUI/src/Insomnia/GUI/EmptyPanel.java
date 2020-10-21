@@ -7,23 +7,18 @@ import java.io.Serializable;
 
 /**
  * the empty panel class
- * it is base of  main panels of applicaton
  */
 public class EmptyPanel extends JPanel  {
     protected JPanel upPanel;
     protected JPanel centerPanel;
 
-    /**
-     * constructor of this class to create new object of this class
-     */
+
     public EmptyPanel() {
         this.setLayout(new BorderLayout());
         configPanels();
-}
+    }
 
-    /**
-     * it use to config panels layout and size
-     */
+    
     private void configPanels() {
         upPanel = new JPanel();
         upPanel.setBorder(new LineBorder(Color.black, 1));

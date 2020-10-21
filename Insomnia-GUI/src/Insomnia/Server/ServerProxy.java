@@ -13,8 +13,6 @@ import java.util.concurrent.Executors;
 
 /**
  * server proxy class
- * it is a client handler
- * it is create a server with server socket class
  */
 public class ServerProxy {
     public static void main(String[] args) {
@@ -38,24 +36,14 @@ public class ServerProxy {
 
 /**
  * this is client handler class
- * it run method send request to server with request sender class
- * and send request response with socket to the client
  */
 class clientHandler implements Runnable {
     private Socket client;
 
-    /**
-     * constructor of this class
-     * @param client client socket
-     */
     public clientHandler(Socket client) {
         this.client = client;
     }
 
-    /**
-     * this is an override of run method
-     * this method send request to server and get request response
-     */
     @Override
     public void run() {
         try {

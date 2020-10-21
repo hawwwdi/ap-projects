@@ -7,40 +7,20 @@ import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import java.awt.*;
 
-/**
- * enum for request methods
- * each method has a specific icon
- */
 public enum Method {
     GET("icons\\Get.png"), DELETE("icons\\DELETE.png"), POST("icons\\post.png"), PUT("icons\\put.png"), PATCH("icons\\patch.png");
 
     private Icon icon;
 
-    /**
-     * constructor for enum
-     * it use to create new enum with given icon patch
-     *
-     * @param path icon patch
-     */
     private Method(String path) {
         this.icon = new ImageIcon(new ImageIcon(path).getImage().getScaledInstance(30, 15, Image.SCALE_DEFAULT));
     }
 
-    /**
-     * getter enum icon
-     *
-     * @return enum icon
-     */
     private Icon getIcon() {
 
         return icon;
     }
 
-    /**
-     * it convert string to method
-     * @param method method name
-     * @return method object
-     */
     public static Method methodRecognizer(String method) {
         for (Method curr : Method.values())
             if (curr.toString().equals(method))
@@ -48,10 +28,6 @@ public enum Method {
         return null;
     }
 
-    /**
-     * it use to customize tree appearance
-     * it use icon of each method
-     */
     public static class customTree extends DefaultTreeCellRenderer {
         Icon insomnia;
         Icon folder;

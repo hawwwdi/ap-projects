@@ -3,8 +3,7 @@ package project;
 import java.util.Scanner;
 
 /**
- * the main class of pentago game
- * it is a simple pentago with java
+ * this is a simple pentago with java
  * @author hadi
  * @version 1.0
  */

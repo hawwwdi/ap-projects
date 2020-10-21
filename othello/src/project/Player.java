@@ -3,30 +3,15 @@ package project;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-/**
- * the player class
- * it use to save player details
- * color = -1 for blank nuts, 0 for white and 1 for black nuts
- */
 public class Player {
     protected int color;
     protected Map gameBoard;
 
-    /**
-     * constructor for player class
-     * it use to create a new abject of this class
-     * @param color new player color
-     * @param gameBoard new player game board
-     */
     public Player(int color, Map gameBoard) {
         this.color = color;
         this.gameBoard = gameBoard;
     }
 
-    /**
-     *it use to put player nuts on the map
-     * user input the coordinate in this method
-     */
     public void putNut() {
         Scanner scanner = new Scanner(System.in);
         if (color == 0)
@@ -51,10 +36,6 @@ public class Player {
         }
     }
 
-    /**
-     * this method check map blocks and find valid blocks for put nuts
-     * @return  if any valid block not found this method return false else return true
-     */
     public boolean hasTurn() {
         Nut[][] map = gameBoard.getMap();
         boolean flag = false;
@@ -73,12 +54,6 @@ public class Player {
 
     }
 
-    /**
-     * this method check a specific coordinate with given x and y
-     * @param x given x
-     * @param y given y
-     * @return if the coordinate has nut around return true else return false
-     */
     protected boolean hasNutAround(int x, int y) {
         Nut[][] map = gameBoard.getMap();
         for (int i = -1; i < 2; i++) {
@@ -90,11 +65,6 @@ public class Player {
         return false;
     }
 
-    /**
-     * this method use to convert user input into the real coordinate
-     * @param y specific character at use input string
-     * @return int value of user input
-     */
     protected int value(char y) {
         if (y > 64)
             return y - 64;

@@ -2,19 +2,11 @@ package project;
 
 /**
  * this is game System class
- * it use to handle game System
- * we can create new game with create new object of this class
- * it has game players and game map
  */
 public class GameSystem {
     Map board;
     Player[] players;
 
-    /**
-     * this is constructor for GameSystem class
-     *  1 for play with computer and something else for play with another user
-     * @param mode game mode its change player definition
-     */
     public GameSystem(int mode) {
         board = new Map();
         players = new Player[2];
@@ -25,10 +17,6 @@ public class GameSystem {
             players[1] = new Player(1, board);
     }
 
-    /**
-     * thr play method
-     * call it to start game :)
-     */
     public void play() {
         int i = 0;
         while (true) {
